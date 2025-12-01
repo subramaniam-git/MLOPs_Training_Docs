@@ -883,3 +883,213 @@ Next:
 		
 	Remote Repos 
 			
+
+
+	
+	
+
+#####################
+Day 5: 1st Dec. 2025
+#####################
+
+	GIT Cli Commands 
+
+	- git ls-files				# To get the list of files that being tracked by git.
+	
+	
+	
+	- git add :
+	
+		git add file1.txt 
+		
+		git add file1.txt file2.txt 
+		
+		git add *.doc *.txt f1.md
+		
+		git add .							==> '.' denotes all untracked changes 
+		
+		
+	- git rm --cached file1.txt 			==> Unstage the changes 
+	
+	
+	- git commit -m "<Valid Commit Message>"
+	
+			git commit -m "Rel-1225:Payment Mode Changes"
+	
+			git commit --amend -m "Valid Message"
+			
+
+	- Git Log :
+	
+		- git log 
+		
+		- git log --oneline
+		
+		- git log -1
+		
+		- git log --oneline -2
+	
+	- Git Show:
+	
+		- git show <commit_id>
+		
+		- git show 4a1bff9
+	
+	
+
+
+			Create Repo, as a best practice, create .gitignore file
+
+			Git Ignore:			: To ignore the files from tracking!
+			
+			
+				- Create .gitignore file 							# Hidden File 
+				
+				- .gitignore file should be the very first commit in the repository
+				
+				- vi .gitignore	
+					
+					sample.txt 
+					*.war 
+					*.jar 
+					target/
+					
+					
+			Project Workspace/Folder :
+			
+			Java_Web_Application_Project
+				
+				- src 
+					main 
+						*.java 
+						*.java 
+					test 
+						*.java 
+						*.java
+						
+				- application.properites 
+				- pom.xml
+				- target
+					*.war 
+				- Dbase_UID
+				- Dbase_Password 
+				
+				
+	- Undo the Committed Changes ::::	
+
+		- git reset / revert 
+
+		git reset :::
+		
+			git reset is used to undo the changes from the repository
+			git reset will reset the commit point to the previous commit point 
+			git reset will not create any new commit point for track purpose 
+			git reset is not recommended in the shared repository 
+
+
+		Syntax :		
+			- git reset <reset_option> <previous_Commit_ID>
+			
+		Reset Options ::
+		
+			git reset --soft <previous_Commit_ID> :::
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will take the changes back to staging area 
+				- The Changes will be available in staging area and working directory					
+		
+			git reset --mixed <previous_Commit_ID> :::		# Default
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will take the changes back to working directory 
+				- The Changes will be available only in working directory			
+			
+			git reset --hard  <previous_Commit_ID> :::
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will permanently delete the files from the system 
+			
+
+	ML Project & MLOps :
+	
+	
+	
+	ETL Process :
+	
+	
+		Extract 		--> 	Monitor Tool 		--> 	Extract raw content		--> 	Committed to Git Repo.
+		
+		Transform 		--> 	Process the Data from that commit point 
+		
+		Load 			--> 	Processed Data will be saved to the Dataset 
+		
+		
+	
+	git revert :::
+	
+		- Git Revert is same as git reset --hard option 		
+		- git revert is used to undo a specific commit 		
+		- git revert will create a new commit point for tracking purpose.		
+		- git revert will maintain the commit history		
+		- git revert is recommended in shared repositories
+		
+		Syntax ::
+			git revert <specific_Commit_ID>
+			
+			
+	GIT Branches:
+	
+		- Branches are the logical copy of repository(default branch)
+		- It used to perform parallel development 
+		- Branches provides isolated path for the developer to independently code the changes 
+		
+		
+	GIT Branching Strategies :::
+	
+		- Git Branching Strategies are used to maintain the integrity of the default branch - main/master
+		
+	Scenario 1:	
+		
+		Repo1:
+		
+			master : cm1,cm2,cm3
+						cm1,cm2,cm3,f1_cm1,f1_cm2						# Upon Merging feature1_Branch.
+				
+			
+				feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+								: cm1,cm2,cm3,f1_cm1,f1_cm2
+								
+								--> Upon testing and review, merge the incremental changes from feature1_Branch to master branch
+	
+		
+	Scenario 2:	
+		
+		Repo1:
+		
+			master : cm1,cm2,cm3
+						cm1,cm2,cm3,cm4 				# 'cm4' - is the Incremental Changes from Developer_Branch
+			
+				Developer_Branch : cm1,cm2,cm3
+									cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+							
+
+					feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+										: cm1,cm2,cm3,f1_cm1,f1_cm2					
+					
+					feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+										: cm1,cm2,cm3,f2_cm1,f2_cm2
+				
+Next :::				
+				
+	Scenario 3:
+	
+	Scenario 4: 
+	
+	Scenario 5:
+	
+	Scenario 6: 	
+
+	Demo using git branches 
+	
+	git merge,rebase,squash 
+	
+	git stash 
+	
+	Remote Repositories

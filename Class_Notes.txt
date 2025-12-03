@@ -1080,11 +1080,7 @@ Next :::
 				
 	Scenario 3:
 	
-	Scenario 4: 
-	
-	Scenario 5:
-	
-	Scenario 6: 	
+	Scenario 4: 	
 
 	Demo using git branches 
 	
@@ -1093,3 +1089,335 @@ Next :::
 	git stash 
 	
 	Remote Repositories
+
+
+
+
+
+#####################
+Day 6: 3rd Dec. 2025
+#####################
+
+
+	Git Branching Strategies Cont.....
+	
+	
+	Scenario 2:	
+		
+		Repo1:
+		
+			master : cm1,cm2,cm3
+						cm1,cm2,cm3,cm4 				# 'cm4' - is the Incremental Changes from Developer_Branch
+			
+				Developer_Branch : cm1,cm2,cm3
+									cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+							
+
+					feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+										: cm1,cm2,cm3,f1_cm1,f1_cm2					
+					
+					feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+										: cm1,cm2,cm3,f2_cm1,f2_cm2
+	
+	
+	Scenario 3:	
+		
+		Repo1:				
+				
+			master : cm1,cm2,cm3
+						cm1,cm2,cm3,cm4 				# 'cm4' - is the Incremental Changes from Integration_Branch
+						
+				Integration_Branch : cm1,cm2,cm3																		Dev_Team1
+										cm1,cm2,cm3,Developer1_Changes,Developer2_Changes
+
+
+					Developer1_Branch : cm1,cm2,cm3
+										cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+								
+
+						feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+											: cm1,cm2,cm3,f1_cm1,f1_cm2					
+						
+						feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+											: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+					Developer2_Branch : cm1,cm2,cm3
+										cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+								
+
+						feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+											: cm1,cm2,cm3,f1_cm1,f1_cm2					
+						
+						feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+											: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+
+	Scenario 4:	
+		
+		Repo1:				
+				
+			master : cm1,cm2,cm3
+						cm1,cm2,cm3,cm4 				# 'cm4' - is the Incremental Changes from Release_Branch
+						
+				Release_Branch : cm1,cm2,cm3
+									cm1,cm2,cm3,Team1_Changes,Team2_Changes			
+						
+						
+					Integration_Branch1 : cm1,cm2,cm3																		Dev_Team1
+											cm1,cm2,cm3,Developer1_Changes,Developer2_Changes
+
+
+						Developer1_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+						Developer2_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+					Integration_Branch12 : cm1,cm2,cm3																		Dev_Team2
+											cm1,cm2,cm3,Developer1_Changes,Developer2_Changes
+
+
+						Developer1_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+						Developer2_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+
+
+
+	Working with Git Branches :
+
+
+		- git branch 							# to get the list of branches 
+		
+		- git branch <new_branch_name>			# Create new_branch
+		
+		- git switch -c <new_branch_name>		# Create new_branch & Switch to new_branch.
+		
+		- git switch <exiting_branch_name>		# Switch to a branch
+		
+		
+		- Repo 
+		
+			master : cm1 
+			
+				feature1 : cm1 
+				
+							cm1,f1cm1
+							
+							git switch master 							
+							
+							git merge feature1 				# Merge should executed from the target branch 
+							
+	GIT Merge Conflicts :
+
+		- When more than one user/feature try to update same file at the same level, merge conflict occurs.
+		
+		
+	Handle/Fix Merge Conflicts :
+
+		- How to fix Merge Conflicts ?
+		
+			- Identify the file(s) causing the merge conflicts
+			- Open the file and review the changes 
+			- Upon review, decide which changes to be retained/delete from that file(s).
+			- Update the file by removing the extra header/footer notes and contents.
+			- Perform git add and git commit to fix the issue.
+								
+								
+	On DevOps Perspective, We NEVER Fix the Merge Conflicts. We always PREVENT Merge Conflicts. 
+	
+	- Promote Collaboration!
+	
+	Git Provides Techniques to handle the conflicts :
+	
+	
+	- GIT Rebase :
+
+		- Rebase is used to maintain linear commit history 
+		- Rebase is used to keep the current branch in-sync with target branch 
+		- Rebase can prevent merge-conflicts in the target branch 
+		- As a best practise, it is always recommended to use rebase before merge	
+		
+		
+		Repo1: 
+		
+			master: cm1,cm2,cm3
+			
+						cm1,cm2,cm3,f1cm1,f1cm2,f1cm3						# Upon merging feature1
+						
+						
+						cm1,cm2,cm3,f2cm1,f2cm2,f2cm3,f1cm1,f1cm2,f1cm3		# upon merging feature2 without proper rebase.
+						
+						
+						cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3		# Expected Commit History can be achieved with proper rebase	
+				
+				
+				feature1: cm1,cm2,cm3
+				
+							cm1,cm2,cm3,f1cm1,f1cm2,f1cm3
+							
+							git switch master
+							
+							git merge feature1
+					
+				
+				feature2: cm1,cm2,cm3
+							
+							cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+							
+							git rebase master 
+							
+							cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3	
+							
+							git switch master 
+							
+							git merge feature2
+							
+
+	- GIT SQUASH :::
+	
+		- It is a merge Option. Is used to combine more than one commits into single commit point.
+	
+		Repo:
+		
+			master : cm1 
+						cm1,f1cm1,f1cm2,3,4,5,6,7,8,9,...............,f1cm140
+			
+				feature1 : cm1 
+				
+							cm1,f1cm1,f1cm2,3,4,5,6,7,8,9,...............,f1cm140
+							
+							git switch master 
+							
+							git merge --squash feature1  
+							
+								git commit -m "Combined commits from feature1"
+	
+
+	Scenario 4:	
+		
+		Repo1:				
+				
+			master : cm1,cm2,cm3
+						cm1,cm2,cm3,cm4 				# 'cm4' - is the Incremental Changes from Release_Branch
+						
+				Release_Branch : cm1,cm2,cm3
+									cm1,cm2,cm3,Team1_Changes,Team2_Changes			
+						
+						
+					Integration_Branch1 : cm1,cm2,cm3																		Dev_Team1
+											cm1,cm2,cm3,Developer1_Changes,Developer2_Changes
+
+
+						Developer1_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+						Developer2_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+					Integration_Branch12 : cm1,cm2,cm3																		Dev_Team2
+											cm1,cm2,cm3,Developer1_Changes,Developer2_Changes
+
+
+						Developer1_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+						Developer2_Branch : cm1,cm2,cm3
+											cm1,cm2,cm3,f1_cm1,f1_cm2,f2_cm1,f2_cm2		# Upon Merging feature1&2.	
+									
+
+							feature1_Branch : cm1,cm2,cm3 ---> Assign to a Developer 1.
+												: cm1,cm2,cm3,f1_cm1,f1_cm2					
+							
+							feature2_Branch : cm1,cm2,cm3 ---> Assign to a Developer 2.	
+												: cm1,cm2,cm3,f2_cm1,f2_cm2
+
+	
+	
+	GIT Cherrypick ::::
+	
+		- Is to merge the specific commit to the target branch.
+		
+		Eg.: 
+		
+		Repo1 :
+		
+			master : cm1 
+			
+				feature1 : cm1 
+				
+							cm1,f1cm1,f1cm2,f1cm3
+	
+		
+						git switch master 
+						
+						git cherrypick <f1cm1>						
+							
+			Syntax: 
+			
+				git cherrypick <commit_id1> <commit_id2>
+		
+	
+	
+Next: 
+
+	
+	- GIT STASH :::
+	
+	
+	- GIT Remote Repository :::
+	
+	- Package ML Model using Docker 
+	
+	- DVC 

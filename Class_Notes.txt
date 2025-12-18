@@ -3073,3 +3073,21 @@ Deploy : ML Project - Loksai-feedback-analyzer
 	   : github-actions - cicd 
 	   : Monitoring
 				
+#######################
+Day 15: 18th Dec. 2025
+#######################	
+		
+	- Continuous Monitoring :::
+	
+		ML Models/Project
+	
+			- Environment Monitoring 
+			
+				 Prometheus / Grafana 
+				 
+	- Project :::
+	
+		Automate ML Workflow using MLOps Tools stack 
+		
+		
+		Using Mlflow --> How to Track the ML Model Experiments!
